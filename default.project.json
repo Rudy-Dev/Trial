@@ -1,0 +1,30 @@
+{
+  "name": "Trial",
+  "tree": {
+    "$className": "DataModel",
+    "StarterPlayer": {
+      "$className": "StarterPlayer",
+      "StarterCharacterScripts": {
+        "$className": "StarterCharacterScripts",
+        "currency system": {
+          "$className": "Folder",
+          "$path": "PlayerScripts/StarterCharacterScripts/currency system"
+        }
+      }
+    },
+    "ReplicatedStorage": {
+      "$className": "ReplicatedStorage",
+      "Modules": {
+        "$className": "Folder",
+        "$path": "ReplicatedStorage/Modules"
+      }
+    },
+    "ServerScriptService": {
+      "$className": "ServerScriptService",
+      "currency system": {
+        "$className": "Folder",
+        "$path": "ServerScriptService/Currency System"
+      }
+    }
+  }
+}
