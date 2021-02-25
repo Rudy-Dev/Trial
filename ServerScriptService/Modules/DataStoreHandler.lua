@@ -7,78 +7,50 @@ local DS = game:GetService("DataStoreService")
 local MainData = DS:GetDataStore("MainData")
 
 --Database related
-local TimeBtwAutoSaves = 60
-local SeasionData = 
-{
-    Money = 0
-}
-
-workspace.MoneyGive.ClickDetector.MouseClick:Connect(function(plr)
-    DataStoreHandler:AddMoney(plr, 100)
-end)
+local TimeBtwAutoSaves = 61
+local NewData = {}
 
 game.Players.PlayerAdded:Connect(function(plr)
+    
+    
+
     local a = MainData:GetAsync(plr.UserId)
-    if a then
-        SeasionData[plr.UserId] = a
+    print(a.Money)
+
+    --Check if player is new
+    if a == nil then
+        NewData[plr.UserId] = {Money = 0}
     else
-        SeasionData[plr.UserId] = {Money = 0}
+        NewData[plr.UserId] = {Money = a.Money}
     end
 
-    print(SeasionData)
-
-    function autoSave()
-        while wait(TimeBtwAutoSaves) do
-            for playerUserId, data in pairs(SeasionData) do
-                DataStoreHandler:SaveData(playerUserId)
-            end
+    --Auto saves
+    while wait(TimeBtwAutoSaves) do
+        for key, a in pairs(NewData) do    
+            DataStoreHandler:SaveMoney(key)
+            print("autosaved: " .. key)
         end
     end
 end)
 
 game.Players.PlayerRemoving:Connect(function(plr)
-    DataStoreHandler:SaveData(plr.UserId)
+    DataStoreHandler:SaveMoney(plr.UserId)
 end)
 
---Add money to actual databse
-function DataStoreHandler:AddMoney(plr, amount)
-    --Add money in the magic way
-
-    --If player is new their money is 0 not null so no error :)
-        --Pcall because datastore is unsure
-    local success, _error = pcall(function()
-        SeasionData[plr.UserId] = {Money + amount}
-    end)
-    if success == false then
-        print("ERROR DID NOT SAVE THE DATA")
-        error(_error)
-    end    
+function DataStoreHandler:SaveMoney(key)
+    MainData:SetAsync(key, NewData[key])
 end
 
-function DataStoreHandler:SaveData(key)
-    if SeasionData[key] then
-        MainData:SetAsync(key, SeasionData[key])
-    end
+function DataStoreHandler:AddMoney(key, amount)
+    NewData[key.UserId] = {Money = NewData[key.UserId].Money + amount}
 end
 
---Remove money from player
-function DataStoreHandler:RemoveMoney(plr, amount)
-
-    --Pcall because datastore is unsure
-    local success, _error = pcall(function()
-        SeasionData[plr.UserId] = {Money - amount}
-    end)
-    if success == false then
-        print("CANT REMOVE MONEY")
-        error(_error)
-    end    
+function DataStoreHandler:RemoveMoney(key, amount)
+    NewData[key.UserId] = {Money = NewData[key.UserId].Money - amount}
 end
 
---You can get player money yay
-function DataStoreHandler:GetMoney(plr)
-    local PlrMoneyKey = "PlrMoneyKey_" .. plr.UserId
-
-    return MainData:GetAsync(PlrMoneyKey)
+function DataStoreHandler:GetMoney(key)
+    return NewData[key.UserId].Money
 end
 
 return DataStoreHandler

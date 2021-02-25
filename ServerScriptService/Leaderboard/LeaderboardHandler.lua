@@ -20,6 +20,8 @@ function LeaderboardHandler:Init(plr)
 		Money = Instance.new("IntValue")
 	end
 	Money.Name = "Money"
+
+	wait(5)
 	Money.Value = DataStoreHandler:GetMoney(plr)
 	Money.Parent = leaderstats
 end

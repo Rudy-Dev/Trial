@@ -7,12 +7,14 @@ ShopItems.Items =
         Name = "Tool",
         Price = 10,
         Tool = game.ServerStorage:WaitForChild("Tool"),
+        GiveMoney = nil
     },
-    ["Nothing"] =
+    ["Cash"] =
     {
-        Name = "Nothing",
-        Price = 20,
-        Tool = game.ServerStorage:WaitForChild("Nothing")
+        Name = "Cash",
+        Price = 0,
+        Tool = nil,
+        GiveMoney = 100
     }
 }
 

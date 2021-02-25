@@ -10,6 +10,10 @@
           "$className": "Folder",
           "$path": "PlayerScripts/StarterCharacterScripts/currency system"
         },
+        "dailyreward":{
+          "$className": "Folder",
+          "$path": "PlayerScripts/StarterCharacterScripts/dailyreward"
+        },
         "Shop":{
           "$className": "Folder",
           "$path": "PlayerScripts/StarterCharacterScripts/Shop"
@@ -28,6 +32,10 @@
       "currency system": {
         "$className": "Folder",
         "$path": "ServerScriptService/Currency System"
+      },
+      "dailyreward":{
+        "$className": "Folder",
+        "$path": "ServerScriptService/dailyreward"
       },
       "Modules":{
         "$className": "Folder",
