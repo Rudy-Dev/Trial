@@ -21,6 +21,7 @@ CloseShop.MouseButton1Click:Connect(function()
     ShopFrame.Visible = false
 end)
 
+--Simple, no mess with buttons
 for _,i in pairs(ShopFrame.Buttons:GetChildren()) do
     i.MouseButton1Click:Connect(function()
         local str = string.gsub(i.Name, "Buy ", "")

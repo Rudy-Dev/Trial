@@ -33,10 +33,6 @@
         "$className": "Folder",
         "$path": "ServerScriptService/Currency System"
       },
-      "dailyreward":{
-        "$className": "Folder",
-        "$path": "ServerScriptService/dailyreward"
-      },
       "Modules":{
         "$className": "Folder",
         "$path": "ServerScriptService/Modules"

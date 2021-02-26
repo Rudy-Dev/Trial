@@ -3,6 +3,7 @@ local StarterGui = game:GetService("StarterGui")
 
 local CurrencyUIHandler = {}
 
+--Give notification
 function CurrencyUIHandler:CreateMoneyNotification(money)
     StarterGui:SetCore("SendNotification", {
 		Title = "Pay check!",
