@@ -9,5 +9,3 @@ local GetMoneyRemote = game.ReplicatedStorage.Remotes:WaitForChild("GetMoney")
 GetMoneyRemote.OnClientEvent:Connect(function(money)
 	CurrencyUIHandler:CreateMoneyNotification(money)
 end)
-
-
