@@ -1,5 +1,8 @@
 # Some code
 
+Everything should work, if not make issue and we are going to figure it out.
+I'm going to rewrite the thing soon,
+
 I don't even know what I made there 
 you are free to do anything with this
 
